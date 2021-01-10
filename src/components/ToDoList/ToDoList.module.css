@@ -1,0 +1,14 @@
+.todo {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #000000;
+  padding: 10px;
+}
+.button {
+  border-radius: 10px;
+  height: 40px;
+  background-color: yellowgreen;
+  cursor: pointer;
+}

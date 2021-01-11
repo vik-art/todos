@@ -1,16 +1,27 @@
 .todo {
-  width: 600px;
+  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
   padding: 10px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: wheat;
+}
+.list {
+  padding-inline-start: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 .button {
   border-radius: 10px;
   height: 40px;
   background-color: yellowgreen;
   cursor: pointer;
+  border: none;
+  box-shadow: 5px 5px 15px 5px #000000;
 }
 .text {
   text-align: left;

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ToDoList.module.css';
 
-const ToDoList = ({ todos, onDeleteTodo, onToggleCompleted }) => <ul>{todos.map(todo => 
+const ToDoList = ({ todos, onDeleteTodo, onToggleCompleted }) => <ul className={s.list}>{todos.map(todo => 
 <li key={todo.id} className={s.todo}>
     <label className={s.label}>
     <input 

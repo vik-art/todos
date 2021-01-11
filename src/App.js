@@ -7,11 +7,7 @@ import TodoEditor from './components/TodoEditor'
 
 export default class App extends Component {
   state = {
-    todos: [
-      {text: "Выучить основы React", completed: false, id: shortid.generate()},
-      {text: "Разобраться с React Router", completed: false, id: shortid.generate()},
-      {text: "Пережить Redux", completed: false, id: shortid.generate()}
-    ],
+    todos: [],
   }
 addTodo = (text) => {
 const todo = {
@@ -41,6 +37,18 @@ togleCompleted = (todoId) => {
   })
 }))
 }
+componentDidMount() {
+  const todos = localStorage.getItem("todos");
+  const parsedTodos = JSON.parse(todos);
+  if(parsedTodos) {
+  this.setState({todos: parsedTodos});
+  }
+}
+componentDidUpdate(prevProps, prevState) {
+  if(this.state.todos !== prevState.todos) {
+    localStorage.setItem("todos", JSON.stringify(this.state.todos))
+  }
+}
   render() {
     const { todos } = this.state;
     const completedTodos = todos.reduce(
@@ -48,14 +56,16 @@ togleCompleted = (todoId) => {
     return (
       <>
       <h1 className={s.headling}>Список дел</h1>
+      <TodoEditor onSubmit={this.addTodo}/>
     <ToDoList 
     todos={todos} 
     onDeleteTodo = {this.deleteTodo}
     onToggleCompleted = {this.togleCompleted}
     />
+    <div className={s.statistic}>
     <h2 className={s.total}>Общее количество дел: {todos.length}</h2>
     <h2 className={s.total}>Количество выполненных дел: {completedTodos}</h2>
-    <TodoEditor onSubmit={this.addTodo}/>
+    </div>
     </>
     )
   }
